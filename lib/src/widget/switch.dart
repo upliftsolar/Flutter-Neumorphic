@@ -164,7 +164,7 @@ class NeumorphicSwitch extends StatelessWidget {
               shape: NeumorphicShape.flat,
               color: _getTrackColor(theme, this.isEnabled),
             ),
-            child: AnimatedScale(
+            child: NeumorphicAnimatedScale(
               scale: this.isEnabled ? 1 : 0,
               alignment: this.value ? Alignment(0.5, 0) : Alignment(-0.5, 0),
               child: AnimatedThumb(
