@@ -55,6 +55,7 @@ class NeumorphicButton extends StatefulWidget {
   final Duration duration;
   final Curve curve;
   final NeumorphicButtonClickListener? onPressed;
+  final NeumorphicButtonClickListener? onLongPress;
   final bool drawSurfaceAboveChild;
   final bool provideHapticFeedback;
   final String? tooltip;
@@ -71,6 +72,7 @@ class NeumorphicButton extends StatefulWidget {
     this.curve = Neumorphic.DEFAULT_CURVE,
     //this.accent,
     this.onPressed,
+    this.onLongPress,
     this.minDistance = 0,
     this.style,
     this.provideHapticFeedback = true,
@@ -195,6 +197,11 @@ class _NeumorphicButtonState extends State<NeumorphicButton> {
       onTapCancel: () {
         hasTapUp = true;
         _resetIfTapUp();
+      },
+      onLongPress: () {
+        if (widget.onLongPress != null) {
+          widget.onLongPress!();
+        }
       },
       child: animationScale.AnimatedScale(
         scale: _getScale(),
