@@ -157,6 +157,7 @@ class NeumorphicRadio<T> extends StatelessWidget {
   final EdgeInsets padding;
   final NeumorphicRadioStyle style;
   final NeumorphicRadioListener<T?>? onChanged;
+  final Function? onLongPress;
   final bool isEnabled;
 
   final Duration duration;
@@ -171,6 +172,7 @@ class NeumorphicRadio<T> extends StatelessWidget {
     this.padding = EdgeInsets.zero,
     this.groupValue,
     this.onChanged,
+    this.onLongPress,
     this.isEnabled = true,
   });
 
@@ -209,6 +211,9 @@ class NeumorphicRadio<T> extends StatelessWidget {
     return NeumorphicButton(
       onPressed: () {
         _onClick();
+      },
+      onLongPress: () {
+        this.onLongPress?.call();
       },
       duration: this.duration,
       curve: this.curve,
