@@ -119,7 +119,7 @@ class NeumorphicCheckboxStyle {
 class NeumorphicCheckbox extends StatelessWidget {
   final bool value;
   final NeumorphicCheckboxStyle style;
-  final NeumorphicCheckboxListener onChanged;
+  final NeumorphicCheckboxListener? onChanged;
   final isEnabled;
   final EdgeInsets padding;
   final EdgeInsets margin;
@@ -140,7 +140,9 @@ class NeumorphicCheckbox extends StatelessWidget {
   bool get isSelected => this.value;
 
   void _onClick() {
-    this.onChanged(!this.value);
+    if (this.onChanged != null) {
+      this.onChanged!(!this.value);
+    }
   }
 
   @override
